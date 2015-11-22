@@ -78,5 +78,5 @@ class Steg_out():                               #instantiates a class which allo
         else:
             return t + ' failed checksum'
 
-        return t
+
 
