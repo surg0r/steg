@@ -18,7 +18,7 @@ encode(inputfile, data, outputfile)
 1. instantiate the class
 steg = Steg()
 2. encode the file with a string
-st.encode('image_I_want_to_use.jpg','string or private key I want to encode','output_file_I_want_to_use.png')
+steg.encode('image_I_want_to_use.jpg','string or private key I want to encode','output_file_I_want_to_use.png')
 
 Encode takes data string (e.g. private key) as an argument and inserts it into the image file by altering the least significant bit of the R palette value from the r,g,b tuple of each consecutive pixel until the data is inserted.
 To convert a hexadecimal random private key representation to a wif format key you may call the function
@@ -28,7 +28,7 @@ Example:
 
 to decode an string from an image file
 
-hidden_string_or_key = decode('optional file arg')
+hidden_string_or_key = steg.decode('optional file arg')
 
 By default opens output.png but can be overridden by supplying different name.
 It returns the decoded string after confirmation of data integrity by sha256 checksum.
