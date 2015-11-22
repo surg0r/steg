@@ -22,6 +22,9 @@ The default setting is to remove 408 bits unless otherwise instructed - this is 
 and 408 bits in length.
 
 Improvements to make:
+
 1) explicit handling of 'hex', 'wif' and 'bip38' keys.
+
 2) implement a checksum on data extraction..
+
 3) implement redundancy so that a lossy output file (with compression such as a jpg) can be used as opposed say a png..
