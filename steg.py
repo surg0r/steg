@@ -10,13 +10,14 @@ from PIL import Image
 def create_wif_key( key):
         return encode_privkey(key, 'wif')
 
-class Steg_in():                           #instantiate a class which allows steganography data in and out of im..
+class Steg():                           #instantiate a class which allows steganography data in and out of im..
     def __init__(self, file):
         self.im = Image.open(file)
         self.im_w, self.im_h = self.im.size
         self.rgb_im = self.im.convert('RGB')
 
-    def steg_in(self, data, output='output.png'):            #put data into image..
+
+    def encode(self, data, output='output.png'):            #put data into image..default output image output.png
         self.output = output
         self.data = data + sha256(data)[-4:]
         self.data = chr(len(self.data)) + self.data
@@ -44,15 +45,11 @@ class Steg_in():                           #instantiate a class which allows ste
 
         self.rgb_im.save(self.output)
 
-
-
-class Steg_out():                               #instantiates a class which allows data out..
-    def __init__(self, file='output.png'):
+    def decode(self,file = 'output.png'):         #n=512 (64 hex * 8), n=408 (64 hex -> 51 wif * 8) extract private key from file..
         self.im = Image.open(file)
         self.im_w, self.im_h = self.im.size
         self.rgb_im = self.im.convert('RGB')
 
-    def steg_out(self):         #n=512 (64 hex * 8), n=408 (64 hex -> 51 wif * 8) extract private key from file..
         j = 0
         p = ""
 
@@ -77,6 +74,4 @@ class Steg_out():                               #instantiates a class which allo
             return t[:-4]
         else:
             return t + ' failed checksum'
-
-
 
