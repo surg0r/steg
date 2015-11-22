@@ -54,8 +54,7 @@ class Steg_out():                               #instantiates a class which allo
             p=""
             for y in range(0,8):
                 r, g, b = self.rgb_im.getpixel((j,0))
-                r = r & 1
-                p = p + str(r)
+                p = p + str(r & 1)                  #and each r value with b 00000001 to extract the encode bit as a byte
                 j += 1
             t.append(chr(int(p,2)))
         t = "".join(t)

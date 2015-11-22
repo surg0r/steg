@@ -1,3 +1,5 @@
+#Example script using steg.py which inserts a private key into a supplied image and outputs output.png containing the key
+
 __author__ = 'pete'
 from steg import *
 
