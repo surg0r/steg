@@ -15,7 +15,7 @@ priv = raw_input()
 if not priv:
     priv = random_key()
 print 'hex', priv
-priv = st.create_wif_key(priv)
+priv = create_wif_key(priv)
 print ' input', priv
 st.steg_in(priv)
 st1 = Steg_out()
