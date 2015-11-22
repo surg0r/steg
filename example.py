@@ -10,7 +10,7 @@ if not img_file:
     print 'this only works with a provided image file - sorry'
     exit()
 
-st = Steg(img_file)     #instantiate the steg class with a file to open..
+st = Steg()     #instantiate the steg class
 
 print '>>>Usage: now type or paste a private key to encode into the image (hit enter for a random key to be generated):'
 priv = raw_input()
@@ -20,8 +20,7 @@ print 'hex', priv
 priv = create_wif_key(priv)
 print ' input', priv
 
-st.encode(priv,'test.png')          #write priv to 'test.png'
-
-data = st.decode('test.png')        #decode key from 'test.png'
+st.encode(img_file, priv)          #encode key
+data = st.decode('output.png')        #decode key
 
 print 'output', data

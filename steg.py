@@ -11,13 +11,13 @@ def create_wif_key( key):
         return encode_privkey(key, 'wif')
 
 class Steg():                           #instantiate a class which allows steganography data in and out of im..
-    def __init__(self, file):
+    #def __init__(self,):
+
+    def encode(self, file,  data, output='output.png'):            #put data into image..default output image output.png
         self.im = Image.open(file)
         self.im_w, self.im_h = self.im.size
         self.rgb_im = self.im.convert('RGB')
 
-
-    def encode(self, data, output='output.png'):            #put data into image..default output image output.png
         self.output = output
         self.data = data + sha256(data)[-4:]
         self.data = chr(len(self.data)) + self.data
